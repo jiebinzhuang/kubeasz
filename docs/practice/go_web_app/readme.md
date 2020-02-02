@@ -97,3 +97,9 @@ Hello, Go! I'm instance 799 running version 1.2 at 13109-10-13 09:06:28
 ```
 在本地virtualbox 发现只有
 curl http://10.68.192.124 才ok 疑问待解决
+
+[root@localhost go_web_app]# kubectl get svc
+NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hellogo-svc   NodePort    10.68.192.124   <none>        80:30000/TCP   13d
+kubernetes    ClusterIP   10.68.0.1       <none>        443/TCP        14d
+  
