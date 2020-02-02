@@ -95,3 +95,5 @@ Hello, Go! I'm instance 722 running version 1.2 at 13109-10-13 09:06:27
 $curl http://192.168.111.3:30000
 Hello, Go! I'm instance 799 running version 1.2 at 13109-10-13 09:06:28
 ```
+在本地virtualbox 发现只有
+curl http://10.68.192.124 才ok 疑问待解决
