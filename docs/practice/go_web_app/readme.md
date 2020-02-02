@@ -110,9 +110,12 @@ kubernetes    ClusterIP   10.68.0.1       <none>        443/TCP        14d
  ______________________________________________________________________________________
 Service的Cluster IP，它也是一个虚拟的IP，但更像一个“伪造”的IP网络，原因有一下几点。
 
-Cluster IP仅仅作用于kubernetes Service这个对象，并由Kubernetes管理和分配IP地址（来源于Cluster IP地址池）
-Cluster IP无法被ping，因为没有一个“实体网络对象”来响应
-Cluster IP只能结合Service Port组成一个具体的通信端口，单独的Cluster IP不具备TCP/IP通信的基础，并且它们属于Kubernetes集群这样一个封闭的空间，集群之外的节点如果要访问这个通信端口，则需要做一些额外的工作。
+---Cluster IP仅仅作用于kubernetes Service这个对象，并由Kubernetes管理和分配IP地址（来源于Cluster IP地址池）
+
+---Cluster IP无法被ping，因为没有一个“实体网络对象”来响应
+
+---Cluster IP只能结合Service Port组成一个具体的通信端口，单独的Cluster IP不具备TCP/IP通信的基础，并且它们属于Kubernetes集群这样一个封闭的空间，集群之外的节点如果要访问这个通信端口，则需要做一些额外的工作。
+
 在Kubernetes集群之内，Node IP网，Pod IP网与Cluster IP网之间的通信，采用的是Kubernetes自己设计的一种编程方式的特殊的路由规则，与我们所熟知的IP路由有很大的不同。
 根据上面的分析和总结，我们基本明白了：Service的Cluster IP属于Kubernetes集群内部的地址，无法在集群外部直接使用这个地址。那么矛盾来了：实际上我们开发的业务系统中肯定多少有一部分要提供给Kubernetes集群外部的应用或者用户来使用的，NodePort是解决上述问题最直接、最有效、最常用的做法，这个主题以后再说。
  
